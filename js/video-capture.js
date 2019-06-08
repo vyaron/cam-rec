@@ -68,7 +68,7 @@ elStartCamera.onclick = () =>{
         elVideo.srcObject.getTracks().forEach(track => {
           track.stop();
         });
-      document.getElementById("status").innerHTML = "Canera stopped";
+      document.getElementById("status").innerHTML = "Canmra stopped";
       console.log("recorder stopped");
        elStartCamera.hidden = false; 
        elStopCamera.hidden = true; 
@@ -86,7 +86,7 @@ elStartCamera.onclick = () =>{
         type: "video/webm; codecs=webm"
       });
       let fd = new FormData();
-      fd.append("fname", "test.webm");
+      fd.append("fname", "vidush.webm");
       fd.append("data", bigVideoBlob);
       
       $.ajax({
@@ -95,8 +95,9 @@ elStartCamera.onclick = () =>{
         data: fd,
         processData: false,
         contentType: false
-      }).done(function(data) {
-        console.log(data);
+      }).done(function(videoUrl) {
+        console.log(videoUrl);
+        document.querySelector('#videoList').innerHTML += `<li><a  target="_blank" href="${videoUrl}">${videoUrl}</a></li>`;
       });
     };
   })

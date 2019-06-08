@@ -19,7 +19,7 @@ app.post("/", multipartMiddleware, function(req, res) {
   // let location = path.join(os.tmpdir(), `rec-${Date.now()}.webm`);
   let location = path.join(__dirname, `uploads`, fileName);
   fs.rename(req.files.data.path, location, ()=>{
-      console.log(`upload successful, file written to ${location}`);
+      // console.log(`upload successful, file written to ${location}`);
       const url = `https://puki.ninja/uploads/${fileName}`
       res.end(`${url}`);
   });
