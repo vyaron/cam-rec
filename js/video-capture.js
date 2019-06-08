@@ -7,7 +7,7 @@ if (!navigator.mediaDevices) {
   alert("getUserMedia support required to use this page");
 }
 
-const chunks = [];
+var chunks;
 let onDataAvailable = e => {
   console.log("Adding chunk");
 
@@ -45,6 +45,7 @@ elStartCamera.onclick = () =>{
     }
     
     elStartRecord.onclick = () => {
+      chunks = [];
       recorder.start();
       document.getElementById("status").innerHTML = "recorder started";
       console.log(recorder.state);
